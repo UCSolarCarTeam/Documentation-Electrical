@@ -9,6 +9,8 @@
 *.aux
 *.dvi
 *.out
+*.hst
+*.ver
 
 
 # editor files
