@@ -1,3 +1,6 @@
+# binary files (to avoid merge conflicts)
+*.pdf
+
 # latex files
 *.fdb_latexmk
 *.fls
