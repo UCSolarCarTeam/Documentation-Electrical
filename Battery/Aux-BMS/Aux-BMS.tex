@@ -31,7 +31,7 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[12pt]{report}
+\documentclass[12pt]{article}
 \usepackage[english]{babel}
 \usepackage[margin=1in]{geometry}
 \usepackage[utf8x]{inputenc}
@@ -49,6 +49,7 @@
     colorlinks=true, %set true if you want colored links
     linktoc=all,     %set to all if you want both sections and subsections linked
     linkcolor=black,  %choose some color if you want links to stand out
+    urlcolor=brown,
 }
 
 \begin{document}
@@ -112,13 +113,18 @@ Chathula Adkary \\[3cm] % Your name
 %       INTRODUCTION
 %----------------------------------------------------------------------------------------
 
-\chapter{Introduction}
+\section{Introduction}
+This document provides the description and functionality of the Auxiliary Battery Management System (Aux-BMS) used in Schulich Elysia, the 5th Gen Solar Car of the University of Calgary Solar Car Team. It will also cover the testing procedures that were utilized to ensure proper and safe operation of the circuit board. This document should be read in conjuntion with the \href{https://drive.google.com/drive/u/0/folders/1RuRFeXCH_df2QL6o7zRyYeLvdto-ttc6}{Schematics} and \href{https://github.com/UCSolarCarTeam/Epsilon-Embedded-Software/blob/master/Documentation/AuxBMS.adoc?fbclid=IwAR172uMpHtL8X5OH7NzIacaADQOfsAcYtxaQmT-veKxzl1v6rAvSl-hSCcg}{Documentation from the Software Team}.
 
-\section{About}
+\section{Pinout and pin Description}
 
-\chapter{Initial Testing of Rev. v1.0}
-\section{Overcurrent Protection Circuitry - Logic Testing}
-\subsection{Comparator Operation}
+\section{Description}
+
+\section{Initial Testing of Rev. v1.0}
+
+\subsection{Overcurrent Protection Circuitry - Logic Testing}
+
+\subsubsection{Comparator Operation}
   \begin{itemize}
         \item \textbf{Equipment Used:} Rigol DP832A PSU, Rigol DS1054Z Oscilloscope, BlackMagic Probe
         \item \textbf{Test Procedure:} Current monitor jumper was disconnected from comparator, and a voltage was manually applied to simulate the analog voltage representing current draw. The potentiometer was set to 1.53V. When a voltage of less than or equal to 1.49V was applied to the analog curent signal (no current sense amp), no change was observed. When a voltage of 1.49V or greater was applied to the analog curent signal (no current sense amp), the red LED turned on, showing an overcurrent event. The voltage was reduced below 1.4V, and the red LED stayed on. This is expected. The overcurrent reset button was pressed. This caused the red LED to turn off. Applied voltage remained at 1.4V. Then, the voltage was raised above 1.49V. The red LED turned on, as before. When the voltage was still above 1.49V, the overcurrent reset button was pressed. This had no effect on the red LED. It remained on. This is expected behaviour.
@@ -140,9 +146,5 @@ f you have a question, please use the support box in the bottom right of the scr
 \begin{versionhistory}
   \vhEntry{1.0}{23.10.2019}{CA}{Created}
 \end{versionhistory}
-
-\begin{appendices}
-  \chapter{Schematics}
-\end{appendices}
 
 \end{document}
