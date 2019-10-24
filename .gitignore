@@ -11,6 +11,9 @@
 *.out
 *.hst
 *.ver
+*.lot
+*.lof
+*.toc
 
 
 # editor files
