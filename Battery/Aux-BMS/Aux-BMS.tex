@@ -31,13 +31,26 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[12pt]{article}
+\documentclass[12pt]{report}
 \usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
+\usepackage{float}
+\usepackage[nottoc,numbib]{tocbibind}
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
-\usepackage{vhistory}
+\usepackage{hyperref}
+  \usepackage[tocentry]{vhistory}
+\usepackage{pdfpages}
+\usepackage{appendix}
+
+%Table of contents links
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=black,  %choose some color if you want links to stand out
+}
 
 \begin{document}
 
@@ -53,7 +66,6 @@
 
 \textsc{\LARGE University of Calgary Solar Car Team}\\[1.5cm] % Name of your university/college
 \textsc{\Large Electrical Documentation}\\[0.5cm] % Major heading team name
-%\textsc{\large Minor Heading}\\[0.5cm] % Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -80,7 +92,7 @@ Chathula Adkary \\[3cm] % Your name
 %	LOGO SECTION
 %----------------------------------------------------------------------------------------
 
-  \includegraphics[width=\textwidth]{../../Images/Logos/logo-wide.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+\includegraphics[width=\textwidth]{../../Images/Logos/logo-wide.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
  
 %----------------------------------------------------------------------------------------
 
@@ -88,14 +100,50 @@ Chathula Adkary \\[3cm] % Your name
 
 \end{titlepage}
 
+%----------------------------------------------------------------------------------------
+%       TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
 
-\section{Introduction}
+\tableofcontents
+%\listoffigures
+%\listoftables
+%\newpage
 
+%----------------------------------------------------------------------------------------
+%       INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\chapter{Introduction}
+
+\section{About}
+
+\chapter{Initial Testing of Rev. v1.0}
+\section{Overcurrent Protection Circuitry - Logic Testing}
+\subsection{Comparator Operation}
+  \begin{itemize}
+        \item \textbf{Equipment Used:} Rigol DP832A PSU, Rigol DS1054Z Oscilloscope, BlackMagic Probe
+        \item \textbf{Test Procedure:} Current monitor jumper was disconnected from comparator, and a voltage was manually applied to simulate the analog voltage representing current draw. The potentiometer was set to 1.53V. When a voltage of less than or equal to 1.49V was applied to the analog curent signal (no current sense amp), no change was observed. When a voltage of 1.49V or greater was applied to the analog curent signal (no current sense amp), the red LED turned on, showing an overcurrent event. The voltage was reduced below 1.4V, and the red LED stayed on. This is expected. The overcurrent reset button was pressed. This caused the red LED to turn off. Applied voltage remained at 1.4V. Then, the voltage was raised above 1.49V. The red LED turned on, as before. When the voltage was still above 1.49V, the overcurrent reset button was pressed. This had no effect on the red LED. It remained on. This is expected behaviour.
+        \item \textbf{Conclusion:} Overcurrent protection appears to be functioning properly. It must be test with actual current loads.
+  \end{itemize}
+\subsection{Contactor ON/OFF}
+  \begin{itemize}
+        \item \textbf{Equipment Used:} Rigol DP832A PSU, Rigol DS1054Z Oscilloscope, BlackMagic Probe
+        \item \textbf{Test Procedure:} Connect the 5V and GND lines of the UART connector to channel 1 of a benchtop PSU to power the logic and MCU. Current monitor jumper was disconnected from comparator, and a voltage was manually applied to simulate the analog voltage representing current draw. The MCU was programmed to output '1' on PE2 (CONTACTOR\_ENABLE2). If the logic is working correctly, the green LED to indicate that CONTACTOR B is enabled should turn on, if the red overcurrent LED is off.
+        \item \textbf{Conclusion:} The overcurrent protection circuitry is working as expected. When the red LED (overcurrent) is on, no contactors may turn on (all contactor LEDs are off). When the red LED is off (no overcurrent condition), the contactors may turn on, controlled by the MCU. This was tested with no load attached to the contactor control circuitry. The next step is to test the current amplifier with a real load, and see if the overcurrent circuitry performs as expected. 
+  \end{itemize}
+\section{Current Amplifier Validation}
 Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+f you have a question, please use the support box in the bottom right of the screen to get in touch. 
 
-If you have a question, please use the support box in the bottom right of the screen to get in touch. 
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
 
 \begin{versionhistory}
   \vhEntry{1.0}{23.10.2019}{CA}{Created}
 \end{versionhistory}
+
+\begin{appendices}
+  \chapter{Schematics}
+\end{appendices}
+
 \end{document}
