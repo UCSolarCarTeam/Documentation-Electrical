@@ -1,0 +1,6 @@
+1,Vcc,Power
+2,Vss,Ground
+3,SCL,Serial Clock (from master)
+4,MOSI,Master Output Slave Input
+5,MISO,Master Input Slave Output
+6,SS,Slave Select

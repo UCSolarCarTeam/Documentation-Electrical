@@ -1,0 +1,4 @@
+1,Vcc,Power
+2,Vss,Ground
+3,SDA,Serial Data Line for I2C
+4,SCL,Serial Clock Line for I2C
