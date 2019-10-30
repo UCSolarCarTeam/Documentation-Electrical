@@ -1,0 +1,50 @@
+# LaTeX Style Guide
+
+## Introduction
+The goal of this document is to provide a guide on how the code for a
+LaTeX document should be formatted. The reason for this is two fold;
+first it is designed to provide readability of the code in the documents
+we are working on; second it is designed to make sure there is
+consistency between the code written by the various members of the team.
+As with any style guide, the guide is about consistency and readability.
+If to follow the style guide readability or consistency of the document
+must be broken, breaking from the style guide is fine, however in the
+case of code consistency, that may be an excuse to clean up old code.
+
+## Code Layout
+### Indentation
+Use 4 spaces per indentation level. Spaces are preferred to tabs for
+consistency between editors; Spaces always show up the same between all
+text editors no matter what the settings in the editor is.
+
+Every environment should have be one further indentation level.
+```tex
+\begin{document}
+    Indentation level for document environment
+    \begin{table}
+        Indentation level for table environment
+    \end{table}
+\end{document}
+```
+
+### Maximum Line Length
+Maximum line length will be based on the standard from python
+foundations
+https://www.python.org/dev/peps/pep-0008/#maximum-line-length[pep 8]
+programming style guide
+
+The maximum line length for all code should be 79 characters.
+
+For flowing long blocks of text with fewer structural restrictions
+(docstrings or comments), the line length should be limited to 72
+characters.
+
+Limiting the required editor window width makes it possible to have
+several files open side-by-side, and works well when using code review
+tools that present the two versions in adjacent columns.
+
+The default wrapping in most tools disrupts the visual structure of the
+code, making it more difficult to understand. The limits are chosen to
+avoid wrapping in editors with the window width set to 80, even if the
+tool places a marker glyph in the final column when wrapping lines.
+Some web based tools may not offer dynamic line wrapping at all.
