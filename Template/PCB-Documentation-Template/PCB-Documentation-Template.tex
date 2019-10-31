@@ -2,8 +2,7 @@
 % University of Calgary Solar Car Team 
 % LaTeX Template
 % Version 1.0 (23/10/19)
-%
-% This template has been downloaded from:
+% % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
 %
 % Original author:
@@ -33,14 +32,18 @@
 
 \documentclass[12pt]{article}
 \usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
+\usepackage{float}
+\usepackage[nottoc,numbib]{tocbibind}
 \usepackage{graphicx}
+\usepackage{booktabs}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{hyperref}
 \usepackage[tocentry]{vhistory}
 \usepackage{appendix}
-\usepackage{pgfplotstable}
+\usepackage{pgfplotstable}  %To generate a table from .csv
 
 %Table of contents links
 \hypersetup{
@@ -49,6 +52,8 @@
     linkcolor=black,  %choose some color if you want links to stand out
     urlcolor=brown,
 }
+
+\pgfplotsset{compat=1.15}
 
 \begin{document}
 
@@ -70,7 +75,7 @@
     %----------------------------------------------------------------------------------------
     
     \HRule \\[0.4cm]
-      { \huge \bfseries Auxiliary Battery Management System (Aux-BMS)}\\[0.4cm] % Title of your document
+      { \huge \bfseries Title}\\[0.4cm] % Title of your document
     \HRule \\[1.5cm]
      
     %----------------------------------------------------------------------------------------
@@ -78,7 +83,7 @@
     %----------------------------------------------------------------------------------------
     
     \Large \emph{Original Author:}\\
-    Chathula Adkary \\[3cm] % Your name
+    Your Name \\[3cm] % Your name
     
     %----------------------------------------------------------------------------------------
     %	DATE SECTION
@@ -112,65 +117,70 @@
   %----------------------------------------------------------------------------------------
   
   \section{Introduction}
-  This document provides the description and functionality of the Auxiliary Battery Management System (Aux-BMS) used in Schulich Elysia, the 5th Gen Solar Car of the University of Calgary Solar Car Team.
-  It will also cover the testing procedures that were utilized to ensure proper and safe operation of the circuit board.
-  This document should be read in conjuntion with the \href{https://drive.google.com/drive/u/0/folders/1RuRFeXCH_df2QL6o7zRyYeLvdto-ttc6}{Schematics} and \href{https://github.com/UCSolarCarTeam/Epsilon-Embedded-Software/blob/master/Documentation/AuxBMS.adoc?fbclid=IwAR172uMpHtL8X5OH7NzIacaADQOfsAcYtxaQmT-veKxzl1v6rAvSl-hSCcg}{Documentation from the Software Team}.
+  Provide a brief introduction to the Circuit Board. 
   
-  \section{Inputs/Outputs from the board}
+  \section{Inputs/Outputs from the Board}
+  Provide a high level description of the connections to the connectors of the board
+  
+  \section{Pinout and Pin Description for Major Components}
 
-  \section{Pinout and Pin Description}
-  
+  \subsection{Component A}
+  \begin{table}[H]
+    \begin{center}
+      \caption{Table with pins and pin descriptions for Component A}
+      \label{tab:ComponentA}
+      \pgfplotstabletypeset[
+        multicolumn names, % allows to have multicolumn names
+        col sep=comma, % the seperator in our .csv file
+        display columns/0/.style={
+                  column name=$Pin Number$, 
+                },
+        display columns/1/.style={
+                  column name=$Pin Name$,
+                  string type
+                },
+        display columns/2/.style={
+                  column name=$Description$,
+                  string type
+                },
+      ]{ComponentATable.csv} % filename/path to file
+    \end{center}
+  \end{table}
+
+  \subsection{Component B}
+  \begin{table}[H]
+    \begin{center}
+      \caption{Table with pins and pin descriptions for Component B}
+      \label{tab:ComponentA}
+      \pgfplotstabletypeset[
+        multicolumn names, % allows to have multicolumn names
+        col sep=comma, % the seperator in our .csv file
+        display columns/0/.style={
+                  column name=$Pin Number$, 
+                },
+        display columns/1/.style={
+                  column name=$Pin Name$,
+                  string type
+                },
+        display columns/2/.style={
+                  column name=$Description$,
+                  string type
+                },
+      ]{ComponentBTable.csv} % filename/path to file
+    \end{center}
+  \end{table}
+
   \section{Functional Description}
-  
-  \section{Initial Testing of Rev. v1.0}
-  
-  \subsection{Overcurrent Protection Circuitry - Logic Testing}
-  
-  \subsubsection{Comparator Operation}
+  Provide a thorough description of what the purpose of the Board is.
 
-  \begin{itemize}
-          \item \textbf{Equipment Used:} Rigol DP832A PSU, Rigol DS1054Z Oscilloscope, BlackMagic Probe
-          \item \textbf{Test Procedure:} Current monitor jumper was disconnected from comparator, and a voltage was manually applied to simulate the analog voltage representing current draw.
-          The potentiometer was set to 1.53V. 
-          When a voltage of less than or equal to 1.49V was applied to the analog curent signal (no current sense amp), no change was observed.
-          When a voltage of 1.49V or greater was applied to the analog curent signal (no current sense amp), the red LED turned on, showing an overcurrent event.
-          The voltage was reduced below 1.4V, and the red LED stayed on.
-          This is expected. 
-          The overcurrent reset button was pressed. 
-          This caused the red LED to turn off. 
-          Applied voltage remained at 1.4V. 
-          Then, the voltage was raised above 1.49V.
-          The red LED turned on, as before.
-          When the voltage was still above 1.49V, the overcurrent reset button was pressed.
-          This had no effect on the red LED. 
-          It remained on. 
-          This is expected behaviour.
-          \item \textbf{Conclusion:} Overcurrent protection appears to be functioning properly.
-          It must be test with actual current loads.
-  \end{itemize}
-
-  \subsection{Contactor ON/OFF}
-  \begin{itemize}
-          \item \textbf{Equipment Used:} Rigol DP832A PSU, Rigol DS1054Z Oscilloscope, BlackMagic Probe
-          \item \textbf{Test Procedure:} Connect the 5V and GND lines of the UART connector to channel 1 of a benchtop PSU to power the logic and MCU. 
-            Current monitor jumper was disconnected from comparator, and a voltage was manually applied to simulate the analog voltage representing current draw.
-            The MCU was programmed to output '1' on PE2 (CONTACTOR\_ENABLE2).
-            If the logic is working correctly, the green LED to indicate that CONTACTOR B is enabled should turn on, if the red overcurrent LED is off.
-          \item \textbf{Conclusion:} The overcurrent protection circuitry is working as expected.
-            When the red LED (overcurrent) is on, no contactors may turn on (all contactor LEDs are off).
-            When the red LED is off (no overcurrent condition), the contactors may turn on, controlled by the MCU.
-            This was tested with no load attached to the contactor control circuitry.
-            The next step is to test the current amplifier with a real load, and see if the overcurrent circuitry performs as expected. 
-  \end{itemize}
-
-  \section{Current Amplifier Validation}
-  Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
-  f you have a question, please use the support box in the bottom right of the screen to get in touch. 
+  \section{Testing}
+  Provide a thorough description of the testing procedures that you used to ensure proper functioning of the board before putting it in the car.
   
   \bibliographystyle{IEEEtran}
   \bibliography{ref}
   
   \begin{versionhistory}
-    \vhEntry{1.0}{23.10.2019}{CA}{Created}
+    \vhEntry{1.0}{23.10.2019}{(FirstInit).(LastInit)}{Description}
   \end{versionhistory}
+
 \end{document}
