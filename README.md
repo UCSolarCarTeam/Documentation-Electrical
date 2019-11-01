@@ -20,4 +20,4 @@ Please follow all [Guidelines & Standards].
 
 
 
-[Guidelines & Standards.]:(https://github.com/UCSolarCarTeam/Development-Resources/tree/master/Development-Guide/Git-Guides-and-Standards)
+[Guidelines & Standards]:(https://github.com/UCSolarCarTeam/Development-Resources/tree/master/Development-Guide/Git-Guides-and-Standards)
