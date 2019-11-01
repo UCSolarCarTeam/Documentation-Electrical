@@ -117,12 +117,12 @@
   %----------------------------------------------------------------------------------------
   
   \section{Introduction}
-  Provide a brief introduction to the Circuit Board. 
+  Provide a brief introduction to the Circuit Board and its purpose within the car. 
   
   \section{Inputs/Outputs from the Board}
-  Provide a high level description of the connections to the connectors of the board
+  Provide a high level description of the connections to the connectors of the board.
   
-  \section{Pinout and Pin Description for Major Components}
+  \section{Pinout and Pin Description of Major Components}
 
   \subsection{Component A}
   \begin{table}[H]
@@ -130,19 +130,25 @@
       \caption{Table with pins and pin descriptions for Component A}
       \label{tab:ComponentA}
       \pgfplotstabletypeset[
-        multicolumn names, % allows to have multicolumn names
         col sep=comma, % the seperator in our .csv file
         display columns/0/.style={
-                  column name=$Pin Number$, 
+                  column name=$\textbf{Pin Number}$, 
+                  column type={|c}
                 },
         display columns/1/.style={
-                  column name=$Pin Name$,
-                  string type
+                  column name=$\textbf{Pin Name}$,
+                  string type,
+                  column type={|c|}
                 },
         display columns/2/.style={
-                  column name=$Description$,
-                  string type
+                  column name=$\textbf{Description}$,
+                  string type,
+                  column type={c|}
                 },
+        every head row/.style={before row={\hline}, after row=\hline},
+        every odd row/.style={after row=\hline},
+        every even row/.style={after row=\hline},
+        every last row/.style={after row=\hline},
       ]{ComponentATable.csv} % filename/path to file
     \end{center}
   \end{table}
@@ -153,19 +159,25 @@
       \caption{Table with pins and pin descriptions for Component B}
       \label{tab:ComponentA}
       \pgfplotstabletypeset[
-        multicolumn names, % allows to have multicolumn names
         col sep=comma, % the seperator in our .csv file
         display columns/0/.style={
-                  column name=$Pin Number$, 
+                  column name=$\textbf{Pin Number}$, 
+                  column type={|c}
                 },
         display columns/1/.style={
-                  column name=$Pin Name$,
-                  string type
+                  column name=$\textbf{Pin Name}$,
+                  string type,
+                  column type={|c|}
                 },
         display columns/2/.style={
-                  column name=$Description$,
-                  string type
+                  column name=$\textbf{Description}$,
+                  string type,
+                  column type={c|}
                 },
+        every head row/.style={before row={\hline}, after row=\hline},
+        every odd row/.style={after row=\hline},
+        every even row/.style={after row=\hline},
+        every last row/.style={after row=\hline},
       ]{ComponentBTable.csv} % filename/path to file
     \end{center}
   \end{table}
@@ -180,7 +192,7 @@
   \bibliography{ref}
   
   \begin{versionhistory}
-    \vhEntry{1.0}{23.10.2019}{(FirstInit).(LastInit)}{Description}
+    \vhEntry{1.0}{23.10.2019}{(Initials)}{Description}
   \end{versionhistory}
 
 \end{document}
