@@ -6,11 +6,13 @@ Please follow all [Guidelines & Standards](https://github.com/UCSolarCarTeam/Dev
 
 ## Installing Latex Compiler
   ### Linux
-  ```
+  ```bash
   sudo apt-get install texlive-full
   ```
   ### macOS
   ### Windows
+  * Install [MikTex](https://miktex.org/download)
+  * A good editor is [TexMaker][https://www.xm1math.net/texmaker/]
 
 ## Building Documents
 
