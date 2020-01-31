@@ -1,0 +1,13 @@
+(sym_lib_table
+  (lib (name CANBUS)(type Legacy)(uri ${KIPRJMOD}/CANBUS.lib)(options "")(descr ""))
+  (lib (name connectors)(type Legacy)(uri ${KIPRJMOD}/connectors.lib)(options "")(descr ""))
+  (lib (name dc)(type Legacy)(uri ${KIPRJMOD}/dc.lib)(options "")(descr ""))
+  (lib (name HV_Schematic-cache)(type Legacy)(uri "${KIPRJMOD}/HV Schematic-cache.lib")(options "")(descr ""))
+  (lib (name HV_Schematic-rescue)(type Legacy)(uri "${KIPRJMOD}/HV Schematic-rescue.lib")(options "")(descr ""))
+  (lib (name junctionbox)(type Legacy)(uri ${KIPRJMOD}/junctionbox.lib)(options "")(descr ""))
+  (lib (name marand)(type Legacy)(uri ${KIPRJMOD}/marand.lib)(options "")(descr ""))
+  (lib (name mppt)(type Legacy)(uri ${KIPRJMOD}/mppt.lib)(options "")(descr ""))
+  (lib (name precharger)(type Legacy)(uri ${KIPRJMOD}/precharger.lib)(options "")(descr ""))
+  (lib (name thunderstruckcharger)(type Legacy)(uri ${KIPRJMOD}/thunderstruckcharger.lib)(options "")(descr ""))
+  (lib (name wavesculptor22)(type Legacy)(uri ${KIPRJMOD}/wavesculptor22.lib)(options "")(descr ""))
+)
