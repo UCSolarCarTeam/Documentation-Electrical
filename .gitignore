@@ -1,5 +1,8 @@
 # binary files (to avoid merge conflicts)
 *.pdf
+*.bak
+*.zip
+
 
 # latex files
 *.fdb_latexmk
